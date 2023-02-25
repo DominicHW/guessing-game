@@ -2,7 +2,7 @@
 Simple full stack application which display an image of some Disney character with 4 answer options. 10 questions followed by a score page.
 
 ## Running Locally
-Be sure to have all packages installed (in client/ and server/) by running `npm install`
+Be sure to have all packages installed (in client/ and server/) by running `npm install`\
 `cd server && npm run dev`
 
 The server/ acts as a web server when run, so it can serve the client without having to run it separately.
