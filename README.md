@@ -30,3 +30,4 @@ Given more time, there are a few features that I would aim to integrate to impro
 - Persisting questions on reload - for the purpose of demonstrating the variety of answers and images, the question changes when you reload the page (but doesn't reset which round you're on).
 - Add user feedback to signify correct and incorrect answers - such as a delay with a green success or red failure banner before moving to the next question
 - UI/design tweaks
+- Move server logic from /server into the NextJS custom server
