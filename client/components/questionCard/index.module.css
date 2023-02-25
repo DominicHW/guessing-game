@@ -1,0 +1,11 @@
+.questionCard {
+    display: flex;
+}
+
+.answerWrapper {
+    margin: 10px 0px;
+}
+
+.fullWidth {
+    width: 100%;
+}
