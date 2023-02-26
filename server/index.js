@@ -17,9 +17,10 @@ let numberCorrectAnswers = 0;
 
 const alreadySelectedCharacters = [];
 
-console.log("✔️ Disney data collected and populated locally\n")
+disneyData && disneyData.length > 0 && console.log("✔️ Disney data collected and populated locally\n")
 
 app.post('/api/submitAnswer', (req, res) => {
+    console.log("Received answer submission with body:", req.body);
     const { imageUrl, answer } = req.body;
 
     const characterData = disneyData.find(character => character.imageUrl == imageUrl);
@@ -50,6 +51,7 @@ app.post('/api/submitAnswer', (req, res) => {
 })
 
 app.get('/api/fetchQuestion', (req,res) => {
+    console.log("Received request to fetch question");
     // Collate list of all possible answers
     const allPossibleAnswers = [];
     disneyData.forEach(character => allPossibleAnswers.push(...character.shows));
