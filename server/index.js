@@ -1,5 +1,5 @@
 const express = require("express");
-const path = require('path');
+const path = require("path");
 
 const helpers = require("./helpers");
 
@@ -9,18 +9,25 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/out')));
 
+let disneyData = [];
 
-const disneyData = helpers._fetchDisneyData();
+// Fetch data before starting the app
+helpers._fetchData()
+    .then(data => {disneyData = data})
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`\n⚡Server running on ${PORT}\n`);
+        });
+})
 
 let currentQuestionNumber = 1;
 let numberCorrectAnswers = 0;
 
 const alreadySelectedCharacters = [];
 
-disneyData && disneyData.length > 0 && console.log("✔️ Disney data collected and populated locally\n")
 
 app.post('/api/submitAnswer', (req, res) => {
-    console.log("Received answer submission with body:", req.body);
+    console.log("\nReceived answer submission with body:", req.body);
     const { imageUrl, answer } = req.body;
 
     const characterData = disneyData.find(character => character.imageUrl == imageUrl);
@@ -51,7 +58,7 @@ app.post('/api/submitAnswer', (req, res) => {
 })
 
 app.get('/api/fetchQuestion', (req,res) => {
-    console.log("Received request to fetch question");
+    console.log("\nReceived request to fetch question");
     // Collate list of all possible answers
     const allPossibleAnswers = [];
     disneyData.forEach(character => allPossibleAnswers.push(...character.shows));
@@ -90,6 +97,6 @@ app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, '../client/out/index.html'));
 })
 
-app.listen(PORT, () => {
-    console.log(`⚡Server running on ${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`\n⚡Server running on ${PORT}\n`);
+// });
