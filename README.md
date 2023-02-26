@@ -29,5 +29,6 @@ Given more time, there are a few features that I would aim to integrate to impro
 - Integrate sessions - as it stands, sessions aren't integrated for different users
 - Persisting questions on reload - for the purpose of demonstrating the variety of answers and images, the question changes when you reload the page (but doesn't reset which round you're on).
 - Add user feedback to signify correct and incorrect answers - such as a delay with a green success or red failure banner before moving to the next question
-- UI/design tweaks
+- Results summary - provide details on which answers were correct and incorrect, also providing the correct answer for each question
+- UI/design tweaks - sizing of answer boxes, max size for question card, number of correct answers persisted on the UI
 - Move server logic from /server into the NextJS custom server
